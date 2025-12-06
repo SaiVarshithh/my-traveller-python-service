@@ -23,6 +23,10 @@ class AppConfig(BaseSettings):
     algorithm: str = "HS256"
     access_token_expire_min: int = 30
 
+    # Google Maps API
+    google_maps_api_key: Optional[str] = None
+    google_maps_cache_ttl: int = 86400  # 24 hours in seconds
+
     model_config = SettingsConfigDict(
         env_file=os.getenv("CONFIG_FILE_PATH", "local.config"),
         env_prefix="",

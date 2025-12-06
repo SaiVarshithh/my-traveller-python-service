@@ -1,0 +1,241 @@
+# Free Alternatives to Google Maps API
+
+## 🎉 Good News: Mock Service Now Available!
+
+I've added a **mock Google Maps service** to your project that works without any API key! It includes predefined data for popular destinations like Paris, Tokyo, New York, London, Dubai, Bangkok, and more.
+
+### How to Use Mock Service
+
+**Already configured!** Just restart your app and it will automatically use mock data when no API key is present.
+
+```bash
+# Restart your app
+uv run python app.py
+```
+
+Now you can test trip creation with these destinations:
+- Paris, France
+- Tokyo, Japan
+- New York, USA
+- London, UK
+- Dubai, UAE
+- Bangkok, Thailand
+- Rome, Italy
+- Barcelona, Spain
+- Amsterdam, Netherlands
+- Singapore
+
+---
+
+## 🆓 Free API Alternatives (For Production)
+
+### 1. **OpenStreetMap + Nominatim** (100% Free, No Billing)
+
+**Best for:** Geocoding and basic place search
+
+**Pros:**
+- Completely free
+- No API key required
+- No billing setup needed
+- Open source
+
+**Cons:**
+- Rate limited (1 request/second)
+- Less detailed place data than Google
+- No distance matrix or directions
+
+**Setup:**
+```bash
+pip install geopy
+```
+
+**Usage:**
+```python
+from geopy.geocoders import Nominatim
+
+geolocator = Nominatim(user_agent="mytraveller")
+location = geolocator.geocode("Paris, France")
+print(location.latitude, location.longitude)
+```
+
+**API:** https://nominatim.org/
+
+---
+
+### 2. **Mapbox** (Free Tier: 100,000 requests/month)
+
+**Best for:** Full-featured alternative to Google Maps
+
+**Pros:**
+- Generous free tier
+- Geocoding, directions, places
+- Beautiful maps
+- No credit card required for free tier
+
+**Cons:**
+- Requires API key
+- Less comprehensive place database than Google
+
+**Free Tier:**
+- 100,000 geocoding requests/month
+- 100,000 directions requests/month
+
+**Setup:**
+1. Sign up at: https://account.mapbox.com/auth/signup/
+2. Get API token (no credit card needed)
+3. Install: `pip install mapbox`
+
+**Usage:**
+```python
+from mapbox import Geocoder
+
+geocoder = Geocoder(access_token='YOUR_TOKEN')
+response = geocoder.forward('Paris, France')
+```
+
+**Website:** https://www.mapbox.com/
+
+---
+
+### 3. **LocationIQ** (Free Tier: 5,000 requests/day)
+
+**Best for:** Geocoding and reverse geocoding
+
+**Pros:**
+- No credit card required
+- 5,000 requests/day free
+- Simple API
+- Based on OpenStreetMap data
+
+**Cons:**
+- Limited place search features
+- Smaller database than Google
+
+**Free Tier:**
+- 5,000 requests/day
+- 150,000 requests/month
+
+**Setup:**
+1. Sign up at: https://locationiq.com/register
+2. Get API key (no credit card)
+
+**Usage:**
+```python
+import requests
+
+api_key = "YOUR_API_KEY"
+url = f"https://us1.locationiq.com/v1/search.php?key={api_key}&q=Paris,France&format=json"
+response = requests.get(url)
+```
+
+**Website:** https://locationiq.com/
+
+---
+
+### 4. **OpenRouteService** (Free Tier: 2,000 requests/day)
+
+**Best for:** Directions and routing
+
+**Pros:**
+- Free tier available
+- Good for routing/directions
+- No credit card required
+- Based on OpenStreetMap
+
+**Cons:**
+- Smaller place database
+- Rate limited
+
+**Free Tier:**
+- 2,000 requests/day
+- 40 requests/minute
+
+**Setup:**
+1. Sign up at: https://openrouteservice.org/dev/#/signup
+2. Get API key
+3. Install: `pip install openrouteservice`
+
+**Website:** https://openrouteservice.org/
+
+---
+
+### 5. **HERE Maps** (Free Tier: 250,000 transactions/month)
+
+**Best for:** Enterprise-grade alternative
+
+**Pros:**
+- Very generous free tier
+- Professional quality
+- Geocoding, places, routing
+
+**Cons:**
+- Requires credit card (but won't charge on free tier)
+- More complex setup
+
+**Free Tier:**
+- 250,000 transactions/month
+
+**Setup:**
+1. Sign up at: https://developer.here.com/sign-up
+2. Create project and get API key
+
+**Website:** https://developer.here.com/
+
+---
+
+## 📊 Comparison Table
+
+| Service | Free Tier | Credit Card | Best For |
+|---------|-----------|-------------|----------|
+| **Mock Service** | Unlimited | ❌ No | Testing/Development |
+| **Nominatim** | 1 req/sec | ❌ No | Basic geocoding |
+| **Mapbox** | 100k/month | ❌ No | Full features |
+| **LocationIQ** | 5k/day | ❌ No | Geocoding |
+| **OpenRouteService** | 2k/day | ❌ No | Routing |
+| **HERE Maps** | 250k/month | ✅ Yes | Enterprise |
+| **Google Maps** | $200 credit | ✅ Yes | Best data quality |
+
+---
+
+## 🎯 Recommendation
+
+### For Development/Testing:
+**Use the Mock Service** (already set up!) - No API key needed, works immediately
+
+### For Production (Free):
+**Mapbox** - Best balance of features and generous free tier without credit card
+
+### For Production (Best Quality):
+**Google Maps** - Just enable billing (you get $200 free credit monthly)
+
+---
+
+## 🔧 How to Switch to Mapbox
+
+If you want to use Mapbox instead of the mock service:
+
+1. **Sign up:** https://account.mapbox.com/auth/signup/
+2. **Get token:** Dashboard → Access Tokens
+3. **Install:**
+   ```bash
+   pip install mapbox
+   ```
+4. **Update config:**
+   ```
+   MAPBOX_ACCESS_TOKEN=your-token-here
+   ```
+5. **Create Mapbox service** (similar to Google Maps service)
+
+I can help you implement Mapbox integration if you'd like!
+
+---
+
+## ✅ Current Status
+
+Your app is now configured to use **mock data** for testing. You can:
+- Create trips for popular destinations
+- Get realistic itineraries
+- Test all features without any API key
+- Switch to a real API later when ready
+
+**Restart your app and try creating a trip to Paris, Tokyo, or any other supported destination!** 🚀
