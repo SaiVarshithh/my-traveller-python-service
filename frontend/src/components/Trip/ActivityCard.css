@@ -1,0 +1,252 @@
+.activity-card {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.transport-indicator {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding-left: 2rem;
+}
+
+.transport-line {
+    width: 2px;
+    height: 30px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+    margin-right: 1rem;
+}
+
+.transport-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.transport-icon {
+    font-size: 1rem;
+}
+
+.activity-content {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+}
+
+.activity-content:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(102, 126, 234, 0.3);
+    transform: translateX(4px);
+}
+
+.activity-card.expanded .activity-content {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(102, 126, 234, 0.5);
+}
+
+.activity-header {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.activity-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+}
+
+.time-value {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.duration-badge {
+    padding: 0.25rem 0.75rem;
+    background: rgba(67, 233, 123, 0.2);
+    border: 1px solid rgba(67, 233, 123, 0.3);
+    border-radius: 12px;
+    font-size: 0.75rem;
+    color: #43e97b;
+    font-weight: 600;
+}
+
+.activity-main {
+    flex: 1;
+}
+
+.activity-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.category-icon {
+    font-size: 1.5rem;
+}
+
+.activity-title h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: white;
+}
+
+.custom-badge {
+    padding: 0.25rem 0.75rem;
+    background: rgba(240, 147, 251, 0.2);
+    border: 1px solid rgba(240, 147, 251, 0.3);
+    border-radius: 12px;
+    font-size: 0.75rem;
+    color: #f093fb;
+    font-weight: 600;
+}
+
+.activity-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.875rem;
+}
+
+.meta-icon {
+    font-size: 1rem;
+}
+
+.expand-btn {
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+}
+
+.expand-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.activity-details {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.activity-notes {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+}
+
+.activity-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.action-link,
+.remove-activity-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.action-link {
+    background: rgba(79, 172, 254, 0.2);
+    border: 1px solid rgba(79, 172, 254, 0.3);
+    color: #4facfe;
+}
+
+.action-link:hover {
+    background: rgba(79, 172, 254, 0.3);
+    transform: translateY(-2px);
+}
+
+.remove-activity-btn {
+    background: rgba(245, 87, 108, 0.2);
+    border: 1px solid rgba(245, 87, 108, 0.3);
+    color: #f5576c;
+}
+
+.remove-activity-btn:hover:not(:disabled) {
+    background: rgba(245, 87, 108, 0.3);
+    transform: translateY(-2px);
+}
+
+.remove-activity-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.activity-connector {
+    width: 2px;
+    height: 20px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+    margin: 0 0 0 2rem;
+}
+
+@media (max-width: 768px) {
+    .activity-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .activity-time {
+        flex-direction: row;
+        gap: 1rem;
+        min-width: auto;
+    }
+
+    .activity-actions {
+        flex-direction: column;
+    }
+
+    .action-link,
+    .remove-activity-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { ApolloProvider } from '@apollo/client';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import client from './graphql/client';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import Dashboard from './components/Dashboard/Dashboard';
+import TripList from './components/Trip/TripList';
+import TripDetail from './components/Trip/TripDetail';
 import Navbar from './components/common/Navbar';
 import AnimatedBackground from './components/common/AnimatedBackground';
 
@@ -47,18 +50,21 @@ const MainApp = () => {
     );
   }
 
+  if (!user) {
+    return <AuthPage />;
+  }
+
   return (
-    <>
+    <BrowserRouter>
       <AnimatedBackground />
-      {user ? (
-        <>
-          <Navbar user={user} onLogout={logout} />
-          <Dashboard />
-        </>
-      ) : (
-        <AuthPage />
-      )}
-    </>
+      <Navbar user={user} onLogout={logout} />
+      <Routes>
+        <Route path="/" element={<Dashboard />} />
+        <Route path="/trips" element={<TripList />} />
+        <Route path="/trip/:id" element={<TripDetail />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

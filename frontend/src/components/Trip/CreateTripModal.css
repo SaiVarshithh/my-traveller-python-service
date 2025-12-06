@@ -1,0 +1,439 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.modal-container {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 24px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.4s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.modal-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 2rem 1rem 2rem;
+}
+
+.progress-step {
+    display: flex;
+    align-items: center;
+}
+
+.progress-dot {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active .progress-dot {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.progress-step.completed .progress-dot {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    color: white;
+}
+
+.progress-line {
+    width: 60px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.progress-step.completed .progress-line {
+    background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.modal-body {
+    padding: 2rem;
+    min-height: 400px;
+}
+
+.modal-step {
+    text-align: center;
+}
+
+.step-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.modal-step h2 {
+    font-size: 1.75rem;
+    margin: 1rem 0;
+    color: white;
+}
+
+.modal-step p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2rem;
+}
+
+.trip-input,
+.trip-textarea {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: all 0.3s ease;
+}
+
+.trip-input:focus,
+.trip-textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.trip-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.popular-destinations {
+    margin-top: 2rem;
+    text-align: left;
+}
+
+.suggestions-label {
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 0.75rem;
+}
+
+.destination-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.destination-chip {
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.destination-chip:hover {
+    background: rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.date-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.date-group {
+    text-align: left;
+}
+
+.date-group label {
+    display: block;
+    font-size: 0.875rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.5rem;
+}
+
+.duration-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: rgba(67, 233, 123, 0.1);
+    border: 2px solid rgba(67, 233, 123, 0.3);
+    border-radius: 12px;
+    color: #43e97b;
+    font-weight: 600;
+}
+
+.duration-icon {
+    font-size: 1.2rem;
+}
+
+.budget-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.budget-option {
+    padding: 1.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.budget-option:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-4px);
+}
+
+.budget-option.selected {
+    background: rgba(102, 126, 234, 0.2);
+    border-color: #667eea;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.3);
+}
+
+.budget-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.budget-label {
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.25rem;
+}
+
+.budget-desc {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.trip-summary {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    text-align: left;
+}
+
+.trip-summary h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.125rem;
+    color: white;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+}
+
+.summary-value {
+    color: white;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.loading-state {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.loading-spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #667eea;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 2rem auto;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-state h3 {
+    margin: 1rem 0;
+    color: white;
+}
+
+.loading-state p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.error-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(245, 87, 108, 0.1);
+    border: 1px solid rgba(245, 87, 108, 0.3);
+    border-radius: 8px;
+    margin: 0 2rem;
+    color: #f5576c;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-btn {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-btn.secondary {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.modal-btn.secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.modal-btn.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.modal-btn.primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.modal-btn.primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.modal-btn.create-btn {
+    background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.modal-btn.create-btn:hover:not(:disabled) {
+    box-shadow: 0 6px 20px rgba(67, 233, 123, 0.4);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .budget-options {
+        grid-template-columns: 1fr;
+    }
+
+    .date-inputs {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-container {
+        width: 95%;
+        max-height: 95vh;
+    }
+}

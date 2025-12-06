@@ -1,0 +1,88 @@
+.day-itinerary {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.day-info h3 {
+    font-size: 1.75rem;
+    margin: 0 0 0.5rem 0;
+    color: white;
+}
+
+.day-date {
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0 0 0.75rem 0;
+}
+
+.day-theme {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.theme-icon {
+    font-size: 1rem;
+}
+
+.day-stats {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+}
+
+.stat-icon {
+    font-size: 1.1rem;
+}
+
+.day-notes {
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+}
+
+.day-notes p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.5;
+}
+
+.activities-timeline {
+    position: relative;
+}
+
+@media (max-width: 768px) {
+    .day-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .day-stats {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}

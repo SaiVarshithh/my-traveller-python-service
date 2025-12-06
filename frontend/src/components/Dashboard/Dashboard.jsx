@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import './Dashboard.css';
 
 const Dashboard = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const stats = [
     { icon: '🗺️', label: 'Trips Planned', value: '0', color: '#667eea' },
@@ -13,10 +15,10 @@ const Dashboard = () => {
   ];
 
   const quickActions = [
-    { icon: '🎯', title: 'Plan New Trip', desc: 'Start planning your next adventure' },
-    { icon: '🔍', title: 'Explore', desc: 'Discover amazing destinations' },
-    { icon: '💾', title: 'Saved Places', desc: 'View your favorite spots' },
-    { icon: '⚙️', title: 'Settings', desc: 'Manage your preferences' }
+    { icon: '🎯', title: 'Plan New Trip', desc: 'Start planning your next adventure', action: () => navigate('/trips') },
+    { icon: '🗺️', title: 'My Trips', desc: 'View and manage your trips', action: () => navigate('/trips') },
+    { icon: '🔍', title: 'Explore', desc: 'Discover amazing destinations', action: () => navigate('/trips') },
+    { icon: '⚙️', title: 'Settings', desc: 'Manage your preferences', action: () => { } }
   ];
 
   return (
@@ -30,7 +32,7 @@ const Dashboard = () => {
               <p>Ready to plan your next adventure?</p>
             </div>
           </div>
-          
+
           <div className="user-badge">
             <span className="badge-icon">👤</span>
             <div className="badge-info">
@@ -42,8 +44,8 @@ const Dashboard = () => {
 
         <div className="stats-grid">
           {stats.map((stat, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className="stat-card scale-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
@@ -62,10 +64,11 @@ const Dashboard = () => {
           <h2>Quick Actions</h2>
           <div className="actions-grid">
             {quickActions.map((action, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="action-card scale-in"
                 style={{ animationDelay: `${index * 0.1 + 0.4}s` }}
+                onClick={action.action}
               >
                 <div className="action-icon">{action.icon}</div>
                 <h3>{action.title}</h3>
@@ -79,8 +82,8 @@ const Dashboard = () => {
         <div className="info-banner slide-up">
           <div className="banner-icon">🎉</div>
           <div className="banner-content">
-            <h3>Authentication Complete!</h3>
-            <p>You've successfully logged in with GraphQL. Your travel planning features are coming soon!</p>
+            <h3>Trip Planning is Live!</h3>
+            <p>Create amazing trips with AI-powered itinerary generation. Click "My Trips" to get started!</p>
           </div>
         </div>
       </div>
